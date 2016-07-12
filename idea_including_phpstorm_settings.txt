@@ -1,0 +1,5 @@
+The settings are included in the 'intellij-colors-solarized-master' directory, the settings might be the entire directory actually.
+
+If that doesn't work it shouldn't be too hard to find a solarized light theme for phpstorm.
+
+The current font-size is 16.
