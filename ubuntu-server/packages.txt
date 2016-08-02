@@ -1,0 +1,16 @@
+packages:
+
+
+1. thin: ruby server, used to serve redmine and surprising enough, its actually not easy at all to make this run without knowing how to, 
+  http://code.macournoyer.com/thin/usage/  was a great help.. eventually i got the redmine.yml file in this directory to work, i never
+  got the sockets to work, only the address:port which is perfect for nginx anyway. But the reason why thin didn't start redmine was because 
+  i had a symlink from /var/www/html/redmine --> /usr/share/redmine , which did not work, mb it was a chown thing or whatever. but eventually,
+  i just copied the whole /usr/share/redmine directory into /var/www/html, and started the thin server with   "thin start -C /etc/thin2.3/redmine.yml"... then lsof -i :5000 worked etc.
+
+2. redmine: (choose to install it with the common-db installation, waaay better, and remember that mysql has a crazy password policy with numbers, 
+	and specialcharacters) And if it fucks up, with half installation something, use "man dpkg" to check out the options to remove the packages,	etc.
+3. redmine-mysql:(not much to say)
+4. redmine + nginx:http://www.mueller-public.de/2014/06/install-redmine-on-nginxthin-guide/ 
+
+
+
