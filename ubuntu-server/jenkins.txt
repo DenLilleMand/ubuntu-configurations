@@ -1,0 +1,5 @@
+Installing jenkins is pretty easy, basically its plug and play with the jenkins package.
+
+Other than that i installed the github and simple theme plugins. 
+
+The simple theme plugin enable us to add a js and css file to the installation to change the look&feel. Right now im running with material theme, it provides us with that css file, and its the first thing that pops up when searching for jenkins themes.
