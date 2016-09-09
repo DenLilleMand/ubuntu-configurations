@@ -42,6 +42,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'tpope/vim-unimpaired'
 
 
+Plugin 'lervag/vimtex'
 
 "calendar plugin, for keeping track of when i should program on which project.
 Plugin 'itchyny/calendar.vim'
@@ -158,6 +159,7 @@ filetype plugin indent on
 " the same just plugin specific.
 " filetype plugin indent on    
 
+filetype plugin on
 
 "Sets it on.
 set autoindent
@@ -399,4 +401,14 @@ colorscheme solarized
 " EasyMotion mappings ------------------- {{{
 let  g:EasyMotion_do_mapping = 1
 "}}}
+" Vim-latex ------------------- {{{
+
+"In some cases it will detect a file with the 'tex' suffix as plaintex, to
+"prevent this we set the following setting:
+let g:vimtex_enable = 1
+let g:tex_flavor='latex'	
+"}}}
+
+
+
 
