@@ -1,0 +1,17 @@
+To apply different themes we can basically just copy paste a bunch of stuff into the ~/.i3/config file from some blog post or whatever. But honestly the solution i found was much better i think, there is a repository called i3-style on github that you can install globally through npm, as:
+
+npm install -g i3-style 
+
+Then we can call i3-style to get the options and arguments. 
+
+One of the options:
+-l = list all themes(So we can apply more than 1 theme easily)
+
+The way i applied it:
+i3-style solarized --config ~/.i3/config --save
+
+And the smart thing about that command, is that if you dont add the --save it will just print the changed config file into the console, so that you can verify the contents of the change, and then add the --save if it makes sense.
+
+
+Remember to restart i3(maybe its enough with a reload, i just dont think that allways work):
+i3-msg restart
