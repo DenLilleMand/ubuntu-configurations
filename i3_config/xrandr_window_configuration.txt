@@ -4,5 +4,11 @@ The way to fix this is to get a overview of the xrandr output messages, can read
 How to fix my exact problem(the eDP1 has to be switched out with whatever xrandr calls your output, the name is right before "connected" e.g.  "<name> connected blabla more xrandr output" ):
 xrandr --output eDP1 --off
 
+At home with multiple monitors the thing i had to do was:
+
+xrandr --output eDP1 --off
+xrandr --output HDMI1 --auto --output DP2 --right-of HDMI1
+
+so, xrandr basically just tells you which outputs you have available, and then its up to you, to tell xrandr which one is left/right, resolution etc.
 
 
