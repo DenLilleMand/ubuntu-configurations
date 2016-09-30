@@ -41,6 +41,9 @@ Plugin 'mxw/vim-jsx'
 "Plugin 
 Plugin 'tpope/vim-unimpaired'
 
+"Fsharp support:
+Plugin 'fsharp/vim-fsharp'
+
 
 Plugin 'lervag/vimtex'
 
@@ -407,6 +410,16 @@ let  g:EasyMotion_do_mapping = 1
 "prevent this we set the following setting:
 let g:vimtex_enable = 1
 let g:tex_flavor='latex'	
+"}}}
+
+" FSharp settings ---------------- {{{
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 "}}}
 
 

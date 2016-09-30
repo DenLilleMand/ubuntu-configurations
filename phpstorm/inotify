@@ -1,0 +1,7 @@
+sudo vim /etc/sysctl.conf  ->
+add the following line:
+fs.inotify.max_user_watches = 524288 
+
+
+And to reload:
+sudo sysctl -p --system

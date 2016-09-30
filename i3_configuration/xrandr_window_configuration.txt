@@ -1,8 +1,0 @@
- When i first booted i3 with an external monitor it only showed about the same resolution as my laptop. 
-The way to fix this is to get a overview of the xrandr output messages, can read a little about xrandr online, but basically running xrandr with no other arguments gives you details about the current graphic outputs e.g. monitors, which outputs are used, which arent etc. my problem was that i had both the laptop and the external monitor outputs turned on at the same time, so i had to turn the laptop off. And if you have to use more than one monitor, im not entirely sure how that will work, but i imagine both of those should be turned on at the same time ofc, and i hope that they can cope with different resolutions at that point - maybe its worth looking into how to seperate workspaces in i3 on different monitors.
-
-How to fix my exact problem(the eDP1 has to be switched out with whatever xrandr calls your output, the name is right before "connected" e.g.  "<name> connected blabla more xrandr output" ):
-xrandr --output eDP1 --off
-
-
-
