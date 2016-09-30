@@ -1,0 +1,21 @@
+(Might want to check the repository, if these is something newer or whatever)
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo apt-get update && sudo apt-get install -y neovim
+pip install --user neovim
+
+Maybe update pip for good measure: pip install --upgrade pip
+
+
+make the dir:
+~/.config/nvim/  
+
+and create a file called
+
+init.vim 
+
+then make a symbolic link between
+that one and ~/.vimrc(Thank god), like so: 
+
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+
