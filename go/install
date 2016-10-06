@@ -1,0 +1,22 @@
+Go has this "native" on linux kind of feel, so its pretty standard that we have to unpack some stuff, put it in the correct location and add it to the runtime path.
+
+
+Should download the correct distribution from here:
+https://golang.org/dl/
+
+I had to download:
+go1.7.1.linux-amd64.tar.gz  Archive Linux   64-bit
+
+
+Open terminal and go to Downloads then:
+
+sudo tar -C /usr/local -xzf go$VERSION.$OS-$ARCH.tar.gz
+
+add go to your path export PATH=$PATH:/usr/local/go/bin
+
+
+go version to check the current version installed
+
+
+
+

@@ -32,7 +32,7 @@ call vundle#begin()
 Plugin 'angelozerr/tern-node-express'
 
 "A plugin for scala:
-Plugin 'derekwyatt/vim-scala'
+"Plugin 'derekwyatt/vim-scala'
 
 Plugin 'mxw/vim-jsx'
 
@@ -44,13 +44,18 @@ Plugin 'tpope/vim-unimpaired'
 "Fsharp support:
 Plugin 'fsharp/vim-fsharp'
 
+"GoLang plugin
+Plugin 'fatih/vim-go'
 
+"Plugin 'nsf/gocode', {'rtp': 'nvim/'}
+
+
+
+"Latex plugin for university
 Plugin 'lervag/vimtex'
 
 "calendar plugin, for keeping track of when i should program on which project.
 Plugin 'itchyny/calendar.vim'
-
-
 
 "Solarized theme, the most popular vim theme.
 Plugin 'altercation/vim-colors-solarized'
@@ -60,8 +65,8 @@ Plugin 'ervandew/supertab'
 
 "fuzzy search method completion for vim. Has support for alot of languages. 
 "Requires compiling some
-"stuff::://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-super-quick-installation 
-Plugin 'Valloric/YouCompleteMe'
+"stuff::://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-super-quick-installation  -- i disabled it for now, its causing more harm than good. 
+"Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'Raimondi/delimitMate'
 
@@ -421,6 +426,10 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 "}}}
+"deoplete(for auto-completion in nvim ------------ {{{
+let g:deoplete#enable_at_startup=1
+"}}}
+
 
 
 
