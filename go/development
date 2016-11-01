@@ -1,0 +1,29 @@
+I had to install a few things in order to make vim work with go, as far as i understand the best 
+user experience is with neovim nowadays, because they have some async jobs(mb vim 8 has that aswell now though) and 
+thats awesome for talking with a server somewhere about syntax/autocompletion etc. 
+
+So i aliased vim to nvim in my ~/.bashrc  alias vim='nvim'
+
+Other than this, i had some trouble installing 4 essential plugins to make Go work seemlessly with vim. 
+
+I had to install the vim plugin manager called vim-plug, in order to install 
+the 4 plugins i need. It works alot like Vundle actually, the section i made for this 
+plugin goes as follows:
+
+" Vim-plug -------------------- {{{
+call plug#begin('$HOME/.config/nvim/plugged')
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'fatih/vim-go'
+    Plug 'nsf/gocode', { 'rtp': 'nvim', 'do':'~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+    Plug 'zchee/deoplete-go', {'do': 'make'}
+call plug#end()
+" }}}
+
+And can see that in my dot file aswell. What i dont have documented anywhere though
+is that i had to symlink ~/.config/nvim/autoload with ~/.config/nvim/plugged, i am sure
+that its just because i followed different tutorials that used different conventions, can probably call it whatever i want. 
+
+It is probably the easiest to follow the install documentation on these plugins webpage,
+but you install vim-plug plugins with the command :PlugInstall, 
+and if you have any errors in these repository names etc, it can complain about your github username, which isn't really the issue. 
+

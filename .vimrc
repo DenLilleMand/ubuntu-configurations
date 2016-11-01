@@ -44,12 +44,7 @@ Plugin 'tpope/vim-unimpaired'
 "Fsharp support:
 Plugin 'fsharp/vim-fsharp'
 
-"GoLang plugin
-Plugin 'fatih/vim-go'
-
-"Plugin 'nsf/gocode', {'rtp': 'nvim/'}
-
-
+Plugin 'nsf/gocode', {'rtp': 'nvim/'}
 
 "Latex plugin for university
 Plugin 'lervag/vimtex'
@@ -65,7 +60,7 @@ Plugin 'ervandew/supertab'
 
 "fuzzy search method completion for vim. Has support for alot of languages. 
 "Requires compiling some
-"stuff::://github.com/Valloric/YouCompleteMe#ubuntu-linux-x64-super-quick-installation  -- i disabled it for now, its causing more harm than good. 
+"stuff::://github.com/Valloric/YouCompleteMe#ubunt-linux-x64-super-quick-installation  -- i disabled it for now, its causing more harm than good. 
 "Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'Raimondi/delimitMate'
@@ -152,6 +147,14 @@ Plugin 'scrooloose/syntastic'
 call vundle#end()            
 
 "}}}
+" Vim-plug -------------------- {{{
+call plug#begin('$HOME/.config/nvim/plugged')
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'fatih/vim-go'
+    Plug 'nsf/gocode', { 'rtp': 'nvim', 'do':'~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+    Plug 'zchee/deoplete-go', {'do': 'make'}
+call plug#end()
+" }}}
 " settings after#vundle ---------------- {{{
 filetype on 
 filetype indent on
@@ -416,7 +419,6 @@ let  g:EasyMotion_do_mapping = 1
 let g:vimtex_enable = 1
 let g:tex_flavor='latex'	
 "}}}
-
 " FSharp settings ---------------- {{{
 filetype plugin indent on
 " show existing tab with 4 spaces width
