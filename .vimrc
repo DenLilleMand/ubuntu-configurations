@@ -18,6 +18,7 @@ filetype indent off
 filetype plugin indent off
 
 set rtp+=~/.vim/bundle/vundle
+
 "}}}
 " Vundle ---------------- {{{
 call vundle#begin()
@@ -156,6 +157,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
 call plug#end()
 " }}}
 " settings after#vundle ---------------- {{{
+set rtp+=$GOROOT/misc/vim
 filetype on 
 filetype indent on
 filetype plugin indent on
@@ -430,6 +432,29 @@ set expandtab
 "}}}
 "deoplete(for auto-completion in nvim ------------ {{{
 let g:deoplete#enable_at_startup=1
+"}}}
+"neo-vim specific ------------- {{{
+vnoremap <leader>y "+y
+nnoremap <leader>Y "+yg_
+nnoremap <leader>y "+y
+nnoremap <leader>yy "+yy
+
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+"}}}
+"vim-go ---------------- {{{
+let g:go_highlight_string_spellcheck = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_types = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_trailing_whitespace_error = 1
+let g:go_highlight_extra_types = 1
 "}}}
 
 
