@@ -1,6 +1,21 @@
 Source: https://github.com/Anthony25/gnome-terminal-colors-solarized
 
+!!! read the source, it has a option called --install-dircolors which is important!
+
 $ sudo apt-get install dconf-cli
 $ git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git
 $ cd gnome-terminal-colors-solarized
-$ ./install.sh
+$ ./install.sh  
+
+TO ENABLE DIRECTORY COLORS:
+
+We also need another repository for the directory colors: https://github.com/seebi/dircolors-solarized.git
+
+when the repository is cloned, we can test out the different dir colors with the command:
+
+eval `dircolors dircolors.ansi-light`
+
+and in order to make it permanent copy whichever you like to the ~/.dircolors file,
+as a notion - it appears as if we have support for both ansi and 256 colors
+
+can change <dircolors.ansi-light> with whatever dircolors in the file

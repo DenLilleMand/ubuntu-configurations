@@ -7,11 +7,11 @@
 " settings before#vundle -------------------- {{{
 
 "if this wasn't on, we would run in vi-compatible mode.
-set nocompatible       
+set nocompatible
 
-"these two are being turned on when we're behind the 
-"vundle installation. aparently it should be a good thing 
-"to have set before running vundle, im not entirely sure 
+"these two are being turned on when we're behind the
+"vundle installation. aparently it should be a good thing
+"to have set before running vundle, im not entirely sure
 "about the essential reason for it.
 filetype off
 filetype indent off
@@ -37,9 +37,9 @@ Plugin 'angelozerr/tern-node-express'
 
 Plugin 'mxw/vim-jsx'
 
-"'1. Set paste<CR> turns on paste mode, the reason why we do this, is because 'if we're in insert mode, vim will try to indent, and if we paste allready 'indented code forexample, this will mess up big time..  '2.o<esc> inserts a new line below and goes back into normal mode.  '3."*]p gets the content from the systems clipboard, and pastes it in.  '4.set nopaste<cr> turns paste mode off 
+"'1. Set paste<CR> turns on paste mode, the reason why we do this, is because 'if we're in insert mode, vim will try to indent, and if we paste allready 'indented code forexample, this will mess up big time..  '2.o<esc> inserts a new line below and goes back into normal mode.  '3."*]p gets the content from the systems clipboard, and pastes it in.  '4.set nopaste<cr> turns paste mode off
 
-"Plugin 
+"Plugin
 Plugin 'tpope/vim-unimpaired'
 
 "Fsharp support:
@@ -59,18 +59,18 @@ Plugin 'altercation/vim-colors-solarized'
 "Do all of your code completions with tab.
 Plugin 'ervandew/supertab'
 
-"fuzzy search method completion for vim. Has support for alot of languages. 
+"fuzzy search method completion for vim. Has support for alot of languages.
 "Requires compiling some
-"stuff::://github.com/Valloric/YouCompleteMe#ubunt-linux-x64-super-quick-installation  -- i disabled it for now, its causing more harm than good. 
+"stuff::://github.com/Valloric/YouCompleteMe#ubunt-linux-x64-super-quick-installation  -- i disabled it for now, its causing more harm than good.
 "Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'Raimondi/delimitMate'
 
-"nerdcommenter 
+"nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
 
 "tagbar, is a plugin that makes it easy way to provide the tags of the current
-"file. And get a overview of its structure. 
+"file. And get a overview of its structure.
 "This plugin has a dependency on: sudo apt-get install exuberant-ctags
 Plugin 'majutsushi/tagbar'
 
@@ -82,26 +82,28 @@ Plugin 'majutsushi/tagbar'
 Plugin 'StanAngeloff/php.vim'
 
 
-
+"Vim plugin that enables surfing through buffers based on viewing history per window.
+Plugin 'ton/vim-bufsurf'
 
 "Full integration for node in vim, with a bunch of great hotkeys for moving
 "around project etc.
 Plugin 'moll/vim-node'
 
-"easymotion, is  
+"easymotion, is
 Plugin 'Lokaltog/vim-easymotion'
-  
+
 "Tabular, pretty nice intro vid at :
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
 Plugin 'godlygeek/tabular'
 
 
-"ctrlP is a fuzzy search, and enables with ctrl+p, we can search the worktree with it, and find files at insane speeds.   
-Plugin  'kien/ctrlp.vim' 
+"ctrlP is a fuzzy search, and enables with ctrl+p, we can search the worktree with it, and find files at insane speeds.
+Plugin  'kien/ctrlp.vim'
 "gives us this nice interface, the contender for 2nd place is something called powerline",
-"which is waay more heavy weight, and requires you to install system fonts to work properly. 
-"this is the newer and slimmer version, and we even set the theme to powerline, so we get their l&f. 
-Plugin 'bling/vim-airline'
+"which is waay more heavy weight, and requires you to install system fonts to work properly.
+"this is the newer and slimmer version, and we even set the theme to powerline, so we get their l&f.
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 
 
 "Automatically closes HTML tag once you finish typing it with >. It is also smart enough to not autoclose tags when in a comment,
@@ -111,7 +113,7 @@ Plugin 'amirh/HTML-AutoCloseTag'
 "This plugin, makes it easier to wrap text in delimiters such as brackets,
 "paratheses, quotations, even a <div> tag would close correctly with this
 "syntax. All we have to do is have the cursor on the wrapped word, and then we
-"can change the word and what not. 
+"can change the word and what not.
 Plugin 'tpope/vim-surround'
 
 "Allows us to explore the file tree, open files and directories,
@@ -119,7 +121,7 @@ Plugin 'tpope/vim-surround'
 "we can close and reopen and just continue. link to best docs:    http://usevim.com/2012/07/18/nerdtree/
 Plugin 'scrooloose/nerdtree'
 
-"Nerdtree and tabs painlessly in vim. Will make sure that 
+"Nerdtree and tabs painlessly in vim. Will make sure that
 "its only 1 nerdtree being open all the time, it can be closed in all
 "tabs/open in all tabs, can be toggled with :NERDTreeTabsToggle
 "When we close a file, nerdtree will close with it, so no more hanging.
@@ -128,24 +130,24 @@ Plugin  'jistr/vim-nerdtree-tabs'
 
 
 "required, fugitive is a git wrapper for vim, so you never have to leave vim to do git commands. github:https://github.com/tpope/vim-fugitive.
-Plugin 'tpope/vim-fugitive' 
+Plugin 'tpope/vim-fugitive'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plugins:Syntax highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"javascript bundle for vim, this bundle provides syntax and indent plugins. 
+"javascript bundle for vim, this bundle provides syntax and indent plugins.
 Plugin 'pangloss/vim-javascript'
 
 
 "syntastic, is a plugin that checks the syntax through external checkers.
 "syntax errors is help for obvious reasons.
-Plugin 'scrooloose/syntastic' 
+Plugin 'scrooloose/syntastic'
 
 
 " end the vundle run.
-call vundle#end()            
+call vundle#end()
 
 "}}}
 " Vim-plug -------------------- {{{
@@ -158,7 +160,7 @@ call plug#end()
 " }}}
 " settings after#vundle ---------------- {{{
 set rtp+=$GOROOT/misc/vim
-filetype on 
+filetype on
 filetype indent on
 filetype plugin indent on
 " }}}
@@ -170,7 +172,7 @@ filetype plugin indent on
 
 " required, not entirely sure what this does compared to the one above, maybe
 " the same just plugin specific.
-" filetype plugin indent on    
+" filetype plugin indent on
 
 filetype plugin on
 
@@ -182,89 +184,99 @@ set shiftwidth=4
 
 "Does the right thing (mostly) in programs. When its on it makes it so that
 "tabs are calculated from shiftwidth from the beginning of the line, so if
-"we're at like 1 it would indent 3. 
+"we're at like 1 it would indent 3.
 set smartindent
 
-"setting the syntax on. 
-syntax on  
+"setting the syntax on.
+syntax on
 syntax enable
 
 " Turn on line numbering. Turn it off with 'set nonu'
 set nu
 
 "Case insensitive search
-set ic 
+set ic
 
 " Higlhight search
-"set hls 
+"set hls
 
 " Wrap text instead of being on one line
-set lbr 
+set lbr
 "}}}
 " Filetype specific settings --------------------- {{{
 augroup filetype_vim
   autocmd!
   autocmd FileType vim setlocal foldmethod=marker
 augroup END
-"The following is really strange rofl, why would 
-"the file type be javascript written like that? 
-"i thouth it only looked at the postfix, like js, 
-"so what happens if we do jsx, or xlsx etc. some of the new 
-"file types? then i guess vim will use the postfix if it doesn't 
+"The following is really strange rofl, why would
+"the file type be javascript written like that?
+"i thouth it only looked at the postfix, like js,
+"so what happens if we do jsx, or xlsx etc. some of the new
+"file types? then i guess vim will use the postfix if it doesn't
 "exist in their dictionary
-augroup filetype_js 
+augroup filetype_js
   autocmd!
-  autocmd FileType javascript :inoreabbrev <buffer> _author  
-  	\/**
-  	\<cr>Author: Matti Andreas Nielsen
-  	\<cr>License: MIT
-  	\<cr>Date:
-  	\<cr>Description:
-	\<cr>*/
-  autocmd FileType javascript :inoreabbrev <buffer> _react
-  	\import react,{Components,PropTypes} from 'react';
-  	\<cr>
-  	\<cr>
-  	\<cr>export default class Herpderp extends Component {
-  	\<cr>constructor(context, props) {
-  	\<cr>super(context,props);
-  	\<cr>this.state = {}
-  	\<cr>}
-	\<cr>
-  	\<cr>
-  	\<cr>
-  	\<cr>render() {
-  	\<cr>return() {
-  	\<cr>}
-  	\<cr>}
-  	\<cr>}
+  autocmd FileType javascript :inoreabbrev <buffer> _author
+    \/**
+    \<cr>Author: Matti Andreas Nielsen
+    \<cr>License: MIT
+    \<cr>Date:
+    \<cr>Description:
+    \<cr>*/
+    autocmd FileType javascript :inoreabbrev <buffer> _react
+    \import react,{Components,PropTypes} from 'react';
+    \<cr>
+    \<cr>
+    \<cr>export default class Herpderp extends Component {
+    \<cr>constructor(context, props) {
+    \<cr>super(context,props);
+    \<cr>this.state = {}
+    \<cr>}
+    \<cr>
+    \<cr>
+    \<cr>
+    \<cr>render() {
+    \<cr>return() {
+    \<cr>}
+    \<cr>}
+    \<cr>}
 augroup END
 " }}}
 "Abreviations ---------------------------- {{{
-  
-
-
-
-
-
 " }}}
 " Non-Plugin mappings -------------------- {{{
 "This maps jk to escape, that makes it hard to write jk, but its better than 'typeing escape each time to leave insert mode, anyway, i feel like ESC is "better suited for saveing+quitting a file, while shift-ESC could be :q!
 inoremap jk <ESC>
 
-"Buffer navigation(forward is allready on tab)
-noremap <S-tab> :bprevious
 noremap <C-1> :bfirst
 noremap <C-2> :blast
 
-nnoremap <leader>pb :execute "vsplit " . bufname("#")<cr>
+nnoremap <silent> <leader>b :BufSurfBack<cr>
+nnoremap <silent> <leader>n :BufSurfForward<cr>
 
+"is suppose to change buffers with tab and shift-tab. would still be nice
+"changeing buffers with a number though. Ctrl+p does it with names so thats
+"hardly nessecery.
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+
+"Go mappings(maybe i should move them into filetype specific, but then again
+"i sometimes open nvim in a go repository with no files open and want to run
+"GoInstall):
+nnoremap <silent> <leader>d :GoDef <cr>
+nnoremap <leader>b :GoBuild <cr>
+nnoremap <leader>r :GoRun <cr>
+nnoremap <leader>i :GoInstall <cr>
+nnoremap <leader>dws :%s/\s\+$//e<cr>
+
+nnoremap <leader>pb :execute "vsplit " . bufname("#")<cr>
 let mapleader="\\"
 
 
 nnoremap <leader>s :/\v
 
-    
+nnoremap <C-s> :w <cr>
+
 " Open up current file in chrome
 nnoremap <silent> <leader>ch :exec 'silent !open -a "Chrome" % &'
 
@@ -275,7 +287,7 @@ nnoremap <F8> :TagbarToggle<CR>
 inoremap <c-u> <esc>0v$U
 nnoremap <c-u> 0v$U
 
-"where ever we are, this mapping will allways 
+"where ever we are, this mapping will allways
 "point to our .vimrc file and open it in a split window.
 " the $MYVIMRC is a variable that allways points to our .vimrc file.
 nnoremap <leader>ev :vsplit $MYVIMRC <cr>
@@ -287,11 +299,6 @@ nnoremap <leader>ev :vsplit $MYVIMRC <cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 
-"is suppose to change buffers with tab and shift-tab. would still be nice
-"changeing buffers with a number though. Ctrl+p does it with names so thats
-"hardly nessecery.  
-nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
-nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
 
 " }}}
@@ -303,7 +310,7 @@ vnoremap <leader>a: :Tabularize /:\zs<CR>
 
 "}}}
 " Nerdtree settings and mappings ------------------- {{{
-"NERDTtree= Tabs configuration. 
+"NERDTtree= Tabs configuration.
 "NERDTreeTabs on console vim startup
 "mapping ctrl n to boot NERDtree
 noremap <C-n> :NERDTreeToggle<CR>
@@ -329,14 +336,14 @@ let g:nerdtree_tabs_autoclose=1
 let g:nerdtree_tabs_no_startup_for_diff=1
 
 "On Startup, focus NERDTree if opening a directory, focus file if opening a
-"file. When set to 2, always focus file window after startup. 
+"file. When set to 2, always focus file window after startup.
 let g:nerdtree_tabs_smart_startup_focus=1
 
 "Synchronize view of all NERDTree windows (scroll and cursor position)
 let g:nerdtree_tabs_synchronize_view=1
 
-"Synchronize focus when switching windows (focus NERDTree after tab switch if and only if it was focused before tab switch) 
-let g:nerdtree_tabs_synchronize_focus=1 
+"Synchronize focus when switching windows (focus NERDTree after tab switch if and only if it was focused before tab switch)
+let g:nerdtree_tabs_synchronize_focus=1
 
 "Open NERDTree on new tab creation (if NERDTree was globally opened by :NERDTreeTabsToggle)
 let g:nerdtree_tabs_open_on_new_tab=1
@@ -344,7 +351,7 @@ let g:nerdtree_tabs_open_on_new_tab=1
 "Unfocus NERDTree when leaving a tab for descriptive tab names
 let g:nerdtree_tabs_meaningful_tab_names=1
 
-"When switching into a tab, make sure that focus is on the file window, not in the NERDTree window. (Note that this can get 
+"When switching into a tab, make sure that focus is on the file window, not in the NERDTree window. (Note that this can get
 "annoying if you use NERDTree's feature 'open in new tab silently', as you will lose focus on the NERDTree.)
 let g:nerdtree_tabs_focus_on_files=0
 
@@ -366,25 +373,10 @@ let g:NERDTreeChDirMode       = 2
 
 " }}}
 " Airline settings and mappings ----------------------- {{{
-" Enable the list of buffers
-"let g:airline#extensions#tabline#enabled = 1
-"
-" Show just the filename
-"let g:airline#extensions#tabline#fnamemod = ':t'
-
-"let g:airline#extensions#tabline#left_sep = ''
-"let g:airline#extensions#tabline#left_alt_sep = ''
-"let g:airline#extensions#tabline#right_sep = ''
-"let g:airline#extensions#tabline#right_alt_sep = ''
-"let g:airline_powerline_fonts = 1
-"let g:airline#extensions#syntastic#enabled = 1
-"let g:airline_theme='powerlineish'
-"let g:airline#extensions#whitespace#enabled = 1
-"let g:airline#extensions#whitespace#mixed_indent_algo = 1
-"let g:airline#extensions#whitespace#symbol = '!'
-
-
-"let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='tomorrow'
 "}}}
 " Habit breaking - habit making -------------------------- {{{
 "http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
@@ -395,7 +387,7 @@ let g:NERDTreeChDirMode       = 2
 "}}}
 " CtrlP settings and mappings ------------------- {{{
 
-"like a gitignore, just for ctrlP, great for 
+"like a gitignore, just for ctrlP, great for
 "huge sub-directories that we're not interested in, like vendor
 "js/css/whatever
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bin'
@@ -415,11 +407,10 @@ colorscheme solarized
 let  g:EasyMotion_do_mapping = 1
 "}}}
 " Vim-latex ------------------- {{{
-
 "In some cases it will detect a file with the 'tex' suffix as plaintex, to
 "prevent this we set the following setting:
 let g:vimtex_enable = 1
-let g:tex_flavor='latex'	
+let g:tex_flavor='latex'
 "}}}
 " FSharp settings ---------------- {{{
 filetype plugin indent on
