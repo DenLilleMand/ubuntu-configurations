@@ -1,0 +1,1 @@
+Should set the terminal to start up in full screen

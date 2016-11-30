@@ -42,8 +42,9 @@ Plugin 'mxw/vim-jsx'
 "Plugin
 Plugin 'tpope/vim-unimpaired'
 
-"Fsharp support:
-Plugin 'fsharp/vim-fsharp'
+"Fsharp support(Go with the vim-plug install of it instead,
+"otherwise you have to cd into the plugin folder and run a install):
+"Plugin 'fsharp/vim-fsharp'
 
 Plugin 'nsf/gocode', {'rtp': 'nvim/'}
 
@@ -74,7 +75,11 @@ Plugin 'scrooloose/nerdcommenter'
 "This plugin has a dependency on: sudo apt-get install exuberant-ctags
 Plugin 'majutsushi/tagbar'
 
-
+"A plugin made to help you focus on specific code bits, it closes all buffers, 
+"when enabling focus mode and keeps visibility to the place where youre cursor
+"is, when you toggle it out of focus mode it will reopen all the buffers it
+"closed.
+Bundle "merlinrebrovic/focus.vim"
 
 "This project is a fork of php.vim--Garvin which in turn is an update of the php.vim script which in turn is an updated version of the php.vim syntax file distributed with Vim. Whew!
 
@@ -156,6 +161,11 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'fatih/vim-go'
     Plug 'nsf/gocode', { 'rtp': 'nvim', 'do':'~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
     Plug 'zchee/deoplete-go', {'do': 'make'}
+
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
 call plug#end()
 " }}}
 " settings after#vundle ---------------- {{{
@@ -260,13 +270,7 @@ nnoremap <silent> <leader>n :BufSurfForward<cr>
 nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
-"Go mappings(maybe i should move them into filetype specific, but then again
-"i sometimes open nvim in a go repository with no files open and want to run
-"GoInstall):
-nnoremap <silent> <leader>d :GoDef <cr>
-nnoremap <leader>b :GoBuild <cr>
-nnoremap <leader>r :GoRun <cr>
-nnoremap <leader>i :GoInstall <cr>
+"delete trailing white space:
 nnoremap <leader>dws :%s/\s\+$//e<cr>
 
 nnoremap <leader>pb :execute "vsplit " . bufname("#")<cr>
@@ -436,6 +440,7 @@ vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 "}}}
 "vim-go ---------------- {{{
+"configuration:
 let g:go_highlight_string_spellcheck = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
@@ -446,6 +451,16 @@ let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_trailing_whitespace_error = 1
 let g:go_highlight_extra_types = 1
+
+"Help mappings:
+"Go mappings(maybe i should move them into filetype specific, but then again
+"i sometimes open nvim in a go repository with no files open and want to run
+"GoInstall):
+nnoremap <silent> <leader>d :GoDef<cr>
+nnoremap <leader>gb :GoBuild<cr>
+nnoremap <leader>r :GoRun<cr>
+nnoremap <leader>i :GoInstall<cr>
+nnoremap <leader>l :GoLint<cr>
 "}}}
 
 
