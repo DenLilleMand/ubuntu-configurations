@@ -1,0 +1,41 @@
+Best tutorial ever:  https://www.fourkitchens.com/blog/article/trigger-jenkins-builds-pushing-github 
+
+This helped(Have to add the jenkins(github plugin) integration/service on github, and as a 
+jenkins hook url, use  http://<jenins_url>.com/github-webhook/  eg.
+
+http://jenkins.codeandcocaine.com/github-webhook/
+
+Cannot leave out the trailing slash at the end either for some reason.
+Got it from:
+http://stackoverflow.com/questions/30576881/jenkins-build-when-a-change-is-pushed-to-github-option-is-not-working
+
+
+I made a github user aswell on the jenkins server, but i think thats only for private github repositories thats nessecery.
+
+What is very important aswell, is in the initial tutorial, that my jenkins user on the server, had a public/private rsa(ssh) keys,
+and i added those as a Deploy key inside of  repository-->settings-->Deploy keys on the repository i wanted jenkins to have access to.
+
+Jenkins ssh keys was inside of  /var/lib/jenkins/.ssh ... and i think if they dont exist we can just create them. or google it or whatever.
+
+Another important thing is, as the tutorial says, where it says github project url, https link is fine, but in the git plugin repository link,
+its obviously important to use the SSH "clone" instead of https like so:
+
+
+Jenkins
+    -esportshub_webserver
+        -GitHub project	
+            -Project url:	https://github.com/DenLilleMand/esportshubwebserver/
+
+
+        -Source Code management
+            -Radiobutton(git) 
+                -Repository Url: git@github.com:DenLilleMand/esportshubwebserver.git
+And i dont need the credentials aparently.
+
+
+Inside of build triggers the only thing i need tohave is "Build when a change is pushed to github"
+and it gives me a warning even though it works fine atm, not sure why.
+
+           
+
+

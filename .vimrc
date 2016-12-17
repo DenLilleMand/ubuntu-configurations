@@ -166,6 +166,13 @@ Plug 'fsharp/vim-fsharp', {
       \ 'for': 'fsharp',
       \ 'do':  'make fsautocomplete',
       \}
+
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
+
+	
+
 call plug#end()
 " }}}
 " settings after#vundle ---------------- {{{
@@ -462,7 +469,16 @@ nnoremap <leader>r :GoRun<cr>
 nnoremap <leader>i :GoInstall<cr>
 nnoremap <leader>l :GoLint<cr>
 "}}}
+"deoplete-ternjs ---------------- {{{
+let g:tern_request_timeout = 1
 
+"Add extra filetypes
+let g:tern#filetypes = [
+    \ 'jsx',
+    \ 'vue'
+    \ ]
+
+"}}}
 
 
 
