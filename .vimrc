@@ -40,7 +40,7 @@ Plugin 'mxw/vim-jsx'
 "'1. Set paste<CR> turns on paste mode, the reason why we do this, is because 'if we're in insert mode, vim will try to indent, and if we paste allready 'indented code forexample, this will mess up big time..  '2.o<esc> inserts a new line below and goes back into normal mode.  '3."*]p gets the content from the systems clipboard, and pastes it in.  '4.set nopaste<cr> turns paste mode off
 
 "Plugin
-Plugin 'tpope/vim-unimpaired'
+"Plugin 'tpope/vim-unimpaired'
 
 "Fsharp support(Go with the vim-plug install of it instead,
 "otherwise you have to cd into the plugin folder and run a install):
@@ -84,7 +84,7 @@ Bundle "merlinrebrovic/focus.vim"
 "This project is a fork of php.vim--Garvin which in turn is an update of the php.vim script which in turn is an updated version of the php.vim syntax file distributed with Vim. Whew!
 
 ":point_right: Accepting pull requests for PHP 5.6 new features. :point_left:
-Plugin 'StanAngeloff/php.vim'
+"Plugin 'StanAngeloff/php.vim'
 
 
 "Vim plugin that enables surfing through buffers based on viewing history per window.
@@ -95,12 +95,12 @@ Plugin 'ton/vim-bufsurf'
 Plugin 'moll/vim-node'
 
 "easymotion, is
-Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'Lokaltog/vim-easymotion'
 
 "Tabular, pretty nice intro vid at :
 "http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
-Plugin 'godlygeek/tabular'
-
+"Plugin 'godlygeek/tabular'
+"
 
 "ctrlP is a fuzzy search, and enables with ctrl+p, we can search the worktree with it, and find files at insane speeds.
 Plugin  'kien/ctrlp.vim'
@@ -135,7 +135,7 @@ Plugin  'jistr/vim-nerdtree-tabs'
 
 
 "required, fugitive is a git wrapper for vim, so you never have to leave vim to do git commands. github:https://github.com/tpope/vim-fugitive.
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -148,14 +148,13 @@ Plugin 'pangloss/vim-javascript'
 
 "syntastic, is a plugin that checks the syntax through external checkers.
 "syntax errors is help for obvious reasons.
-Plugin 'scrooloose/syntastic'
-
+"Plugin 'scrooloose/syntastic'
 
 " end the vundle run.
 call vundle#end()
 
 "}}}
-" Vim-plug -------------------- {{{
+"Vim-plug -------------------- {{{
 call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'Shougo/deoplete.nvim'
     Plug 'fatih/vim-go'
@@ -167,9 +166,9 @@ Plug 'fsharp/vim-fsharp', {
       \ 'do':  'make fsautocomplete',
       \}
 
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
-Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
+"Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
 
 	
 
@@ -415,7 +414,7 @@ set background=light
 colorscheme solarized
 "}}}
 " EasyMotion mappings ------------------- {{{
-let  g:EasyMotion_do_mapping = 1
+"let  g:EasyMotion_do_mapping = 1
 "}}}
 " Vim-latex ------------------- {{{
 "In some cases it will detect a file with the 'tex' suffix as plaintex, to
@@ -479,7 +478,3 @@ let g:tern#filetypes = [
     \ ]
 
 "}}}
-
-
-
-

@@ -1,0 +1,1 @@
+Actually pretty easy to get to through the interface, click network tab --> Connection information -->  This will show a list of connections, maybe Docker and local network or smt. The ip the local network shows is actually also the ip for the routers interface on the local network.
