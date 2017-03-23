@@ -1,0 +1,5 @@
+#-b for new branch
+git checkout -b <new_branch>
+
+#push the branch remote:
+git push -u origin <branch_name>

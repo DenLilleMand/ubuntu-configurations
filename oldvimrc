@@ -29,15 +29,81 @@ call vundle#begin()
 "required, vundle is the plugin manager.
 "Plugin 'gmarik/Vundle.vim'
 
+"adding docs to express
+Plugin 'angelozerr/tern-node-express'
+
+"A plugin for scala:
+"Plugin 'derekwyatt/vim-scala'
+
+Plugin 'mxw/vim-jsx'
+
+"'1. Set paste<CR> turns on paste mode, the reason why we do this, is because 'if we're in insert mode, vim will try to indent, and if we paste allready 'indented code forexample, this will mess up big time..  '2.o<esc> inserts a new line below and goes back into normal mode.  '3."*]p gets the content from the systems clipboard, and pastes it in.  '4.set nopaste<cr> turns paste mode off
+
+"Plugin
+"Plugin 'tpope/vim-unimpaired'
+
+"Fsharp support(Go with the vim-plug install of it instead,
+"otherwise you have to cd into the plugin folder and run a install):
+"Plugin 'fsharp/vim-fsharp'
+
+Plugin 'nsf/gocode', {'rtp': 'nvim/'}
+
 "Latex plugin for university
 Plugin 'lervag/vimtex'
+
+"calendar plugin, for keeping track of when i should program on which project.
+Plugin 'itchyny/calendar.vim'
 
 "Solarized theme, the most popular vim theme.
 Plugin 'altercation/vim-colors-solarized'
 
+"Do all of your code completions with tab.
+Plugin 'ervandew/supertab'
+
+"fuzzy search method completion for vim. Has support for alot of languages.
+"Requires compiling some
+"stuff::://github.com/Valloric/YouCompleteMe#ubunt-linux-x64-super-quick-installation  -- i disabled it for now, its causing more harm than good.
+"Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'Raimondi/delimitMate'
+
 "nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
 
+"tagbar, is a plugin that makes it easy way to provide the tags of the current
+"file. And get a overview of its structure.
+"This plugin has a dependency on: sudo apt-get install exuberant-ctags
+Plugin 'majutsushi/tagbar'
+
+"A plugin made to help you focus on specific code bits, it closes all buffers, 
+"when enabling focus mode and keeps visibility to the place where youre cursor
+"is, when you toggle it out of focus mode it will reopen all the buffers it
+"closed.
+Bundle "merlinrebrovic/focus.vim"
+
+"This project is a fork of php.vim--Garvin which in turn is an update of the php.vim script which in turn is an updated version of the php.vim syntax file distributed with Vim. Whew!
+
+":point_right: Accepting pull requests for PHP 5.6 new features. :point_left:
+"Plugin 'StanAngeloff/php.vim'
+
+
+"Vim plugin that enables surfing through buffers based on viewing history per window.
+Plugin 'ton/vim-bufsurf'
+
+"Full integration for node in vim, with a bunch of great hotkeys for moving
+"around project etc.
+Plugin 'moll/vim-node'
+
+"easymotion, is
+"Plugin 'Lokaltog/vim-easymotion'
+
+"Tabular, pretty nice intro vid at :
+"http://vimcasts.org/episodes/aligning-text-with-tabular-vim/
+"Plugin 'godlygeek/tabular'
+"
+
+"ctrlP is a fuzzy search, and enables with ctrl+p, we can search the worktree with it, and find files at insane speeds.
+Plugin  'kien/ctrlp.vim'
 "gives us this nice interface, the contender for 2nd place is something called powerline",
 "which is waay more heavy weight, and requires you to install system fonts to work properly.
 "this is the newer and slimmer version, and we even set the theme to powerline, so we get their l&f.
@@ -48,6 +114,12 @@ Plugin 'vim-airline/vim-airline-themes'
 "Automatically closes HTML tag once you finish typing it with >. It is also smart enough to not autoclose tags when in a comment,
 "when they are self-closing, or when they have already been closed.
 Plugin 'amirh/HTML-AutoCloseTag'
+
+"This plugin, makes it easier to wrap text in delimiters such as brackets,
+"paratheses, quotations, even a <div> tag would close correctly with this
+"syntax. All we have to do is have the cursor on the wrapped word, and then we
+"can change the word and what not.
+Plugin 'tpope/vim-surround'
 
 "Allows us to explore the file tree, open files and directories,
 "bookmarks,toggle hidden files, it remembers cursor position within files - so
@@ -61,14 +133,47 @@ Plugin 'scrooloose/nerdtree'
 ""https://github.com/jistr/vim-nerdtree-tabs
 Plugin  'jistr/vim-nerdtree-tabs'
 
+
+"required, fugitive is a git wrapper for vim, so you never have to leave vim to do git commands. github:https://github.com/tpope/vim-fugitive.
+"Plugin 'tpope/vim-fugitive'
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Plugins:Syntax highlighting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"javascript bundle for vim, this bundle provides syntax and indent plugins.
+Plugin 'pangloss/vim-javascript'
+
+
+"syntastic, is a plugin that checks the syntax through external checkers.
+"syntax errors is help for obvious reasons.
+"Plugin 'scrooloose/syntastic'
 
 " end the vundle run.
 call vundle#end()
 
 "}}}
+"Vim-plug -------------------- {{{
+call plug#begin('$HOME/.config/nvim/plugged')
+    Plug 'Shougo/deoplete.nvim'
+    Plug 'fatih/vim-go'
+    Plug 'nsf/gocode', { 'rtp': 'nvim', 'do':'~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+    Plug 'zchee/deoplete-go', {'do': 'make'}
+
+Plug 'fsharp/vim-fsharp', {
+      \ 'for': 'fsharp',
+      \ 'do':  'make fsautocomplete',
+      \}
+
+"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+
+"Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
+
+	
+
+call plug#end()
+" }}}
 " settings after#vundle ---------------- {{{
 set rtp+=$GOROOT/misc/vim
 filetype on
@@ -125,10 +230,6 @@ augroup END
 "so what happens if we do jsx, or xlsx etc. some of the new
 "file types? then i guess vim will use the postfix if it doesn't
 "exist in their dictionary
-augroup filetype_fs_and_fsx
-    autocmd!
-    autocmd FileType fsharp set tabstop=2|set shiftwidth=2|set expandtab
-augroup END
 augroup filetype_js
   autocmd!
   autocmd FileType javascript :inoreabbrev <buffer> _author
@@ -166,8 +267,9 @@ inoremap jk <ESC>
 noremap <C-1> :bfirst
 noremap <C-2> :blast
 
-nmap <S-Enter> O<Esc>j
-nmap <CR> o<Esc>k
+nnoremap <silent> <leader>b :BufSurfBack<cr>
+nnoremap <silent> <leader>n :BufSurfForward<cr>
+
 "is suppose to change buffers with tab and shift-tab. would still be nice
 "changeing buffers with a number though. Ctrl+p does it with names so thats
 "hardly nessecery.
@@ -188,6 +290,9 @@ nnoremap <C-s> :w <cr>
 " Open up current file in chrome
 nnoremap <silent> <leader>ch :exec 'silent !open -a "Chrome" % &'
 
+"Toggle our TagBar with f8
+nnoremap <F8> :TagbarToggle<CR>
+
 "Map <c-u> to back-visual-select eol-caps all, to avoid shift
 inoremap <c-u> <esc>0v$U
 nnoremap <c-u> 0v$U
@@ -207,7 +312,14 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 
 " }}}
-"Nerdtree settings and mappings ------------------- {{{
+" Tabularize ------------------------- {{{
+nnoremap <leader>a= :Tabularize /=<CR>
+vnoremap <leader>a= :Tabularize /=<CR>
+nnoremap <leader>a: :Tabularize /:\zs<CR>
+vnoremap <leader>a: :Tabularize /:\zs<CR>
+
+"}}}
+" Nerdtree settings and mappings ------------------- {{{
 "NERDTtree= Tabs configuration.
 "NERDTreeTabs on console vim startup
 "mapping ctrl n to boot NERDtree
@@ -276,9 +388,33 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='tomorrow'
 "}}}
+" Habit breaking - habit making -------------------------- {{{
+"http://vimcasts.org/blog/2013/02/habit-breaking-habit-making/
+"noremap <Up> <NOP>
+"noremap <Down> <NOP>
+"noremap <Left> <NOP>
+"noremap <Right> <NOP>
+"}}}
+" CtrlP settings and mappings ------------------- {{{
+
+"like a gitignore, just for ctrlP, great for
+"huge sub-directories that we're not interested in, like vendor
+"js/css/whatever
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bin'
+
+"This is a setting that works great in combination with nerdtree,
+"and it allows us to change 'cwd(working directory)' whenever we change path
+"through nerdtree, that means that instead of ctrlP allways searching from
+"root, it will search from current CWD.
+let g:ctrlp_working_path_mode = 'rw'
+
+"}}}
 "Solarized settings -------------------- {{{
 set background=light
 colorscheme solarized
+"}}}
+" EasyMotion mappings ------------------- {{{
+"let  g:EasyMotion_do_mapping = 1
 "}}}
 " Vim-latex ------------------- {{{
 "In some cases it will detect a file with the 'tex' suffix as plaintex, to
@@ -288,33 +424,17 @@ let g:tex_flavor='latex'
 "}}}
 " FSharp settings ---------------- {{{
 filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
 "}}}
-"neo-vim specific ------------- {{{
-if has('nvim')
 "deoplete(for auto-completion in nvim ------------ {{{
 let g:deoplete#enable_at_startup=1
 "}}}
-"Vim-plug -------------------- {{{
-call plug#begin('$HOME/.config/nvim/plugged')
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'fatih/vim-go'
-    Plug 'nsf/gocode', { 'rtp': 'nvim', 'do':'~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-    Plug 'zchee/deoplete-go', {'do': 'make'}
-
-Plug 'fsharp/vim-fsharp', {
-      \ 'for': 'fsharp',
-      \ 'do':  'make fsautocomplete',
-      \}
-
-"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-
-"Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
-
-	
-
-call plug#end()
-" }}}
-"some neovim mappings for yanking and pasting ------------ {{{
+"neo-vim specific ------------- {{{
 vnoremap <leader>y "+y
 nnoremap <leader>Y "+yg_
 nnoremap <leader>y "+y
@@ -324,8 +444,6 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
-
-
 "}}}
 "vim-go ---------------- {{{
 "configuration:
@@ -350,4 +468,13 @@ nnoremap <leader>r :GoRun<cr>
 nnoremap <leader>i :GoInstall<cr>
 nnoremap <leader>l :GoLint<cr>
 "}}}
-endif
+"deoplete-ternjs ---------------- {{{
+let g:tern_request_timeout = 1
+
+"Add extra filetypes
+let g:tern#filetypes = [
+    \ 'jsx',
+    \ 'vue'
+    \ ]
+
+"}}}
