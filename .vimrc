@@ -349,5 +349,10 @@ nnoremap <leader>gb :GoBuild<cr>
 nnoremap <leader>r :GoRun<cr>
 nnoremap <leader>i :GoInstall<cr>
 nnoremap <leader>l :GoLint<cr>
+nnoremap <leader>gr :GoReferrers<cr>
+nnoremap <leader>gc :GoCallees<cr>
+nnoremap <leader>gi :GoImplements<cr>
+nnoremap <leader>gd :GoDecls
+nnoremap <leader>gdd :GoDeclsDir
 "}}}
 endif
