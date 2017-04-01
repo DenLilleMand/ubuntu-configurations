@@ -1,0 +1,19 @@
+& creates a pointer
+
+e.g. var herpderp string = "sure"
+
+var alright string = &herpderp
+
+-----------------------------------
+* is used to dereference a pointer, 
+
+
+
+
+
+--------------------------------------
+:= is   assignment + declaration in one .
+
+
+--------------------------------------
+= is just for assignment

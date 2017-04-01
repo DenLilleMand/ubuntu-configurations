@@ -1,0 +1,23 @@
+https://github.com/jaagr/polybar/wiki/Module:-i3
+
+
+Sudo apt-get install lxappearence
+
+Pick Raleigh or whatever, and change the font to Hack,
+this should change the fonts inside of ~/.gtkrc-2.0 and ~/.config/gtk-3.0/settings.ini
+
+
+Arc theme:
+
+https://github.com/horst3180/Arc-Theme
+
+After the theme is installed, go into lxappearence(if not installed install this aswell) and pick the arc theme
+
+other icons for ubuntu: Faba-Mono-Dark (just search for it, find its homepage or github or whatever, and it will have some install instructions), then use lxappearence --> Icon Theme to enable it.
+
+Then we need to find a dmenu replacement, currently i am using Rofi, its basically just sudo apt-get install rofi, and then inside of the ~/.i3/config exchange the dmenu exec with rofi, and give it good cmd line arguments to costomize it.
+
+We also need Compton in order to get transparency for the Rofi window.
+
+
+

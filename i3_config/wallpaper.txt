@@ -1,0 +1,5 @@
+sudo apt-get install feh
+
+feh --bg-center <path_to_image>
+
+
