@@ -3,8 +3,10 @@ https://github.com/jaagr/polybar/wiki/Module:-i3
 
 Sudo apt-get install lxappearence
 
-Pick Raleigh or whatever, and change the font to Hack,
+Open lxappearence and Pick Raleigh or whatever, and change the font to Hack,
 this should change the fonts inside of ~/.gtkrc-2.0 and ~/.config/gtk-3.0/settings.ini
+
+For some of these i3 things to work properly we have to install fontawesome aswell, e.g. for the icons in the status bar.
 
 
 Arc theme:
@@ -13,11 +15,15 @@ https://github.com/horst3180/Arc-Theme
 
 After the theme is installed, go into lxappearence(if not installed install this aswell) and pick the arc theme
 
-other icons for ubuntu: Faba-Mono-Dark (just search for it, find its homepage or github or whatever, and it will have some install instructions), then use lxappearence --> Icon Theme to enable it.
+Other icons for ubuntu: Faba-Mono-Dark (just search for it, find its homepage or github or whatever, and it will have some install instructions), then use lxappearence --> Icon Theme to enable it.
 
-Then we need to find a dmenu replacement, currently i am using Rofi, its basically just sudo apt-get install rofi, and then inside of the ~/.i3/config exchange the dmenu exec with rofi, and give it good cmd line arguments to costomize it.
+Then we need to find a dmenu replacement, currently i am using Rofi, its basically just sudo apt-get install rofi, and then inside of the ~/.i3/config exchange the dmenu exec with rofi, and give it good cmd line arguments to customize it.
 
-We also need Compton in order to get transparency for the Rofi window.
+We also need Compton in order to get transparency for the Rofi window, compton should be executed in the .i3/config every time we start aswell. 
 
+I got a lot of my i3 configuration from the repository https://github.com/bookercodes/setupi3 
 
+Both the i3blocks configuration and the standard config.
+
+I got a lot of tips from the youtube videos:https://www.youtube.com/watch?v=j1I63wGcvU4&list=PL5ze0DjYv5DbCv9vNEzFmP6sU7ZmkGzcf   aswell
 
