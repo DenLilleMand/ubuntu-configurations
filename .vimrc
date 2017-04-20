@@ -61,15 +61,12 @@ Plugin 'scrooloose/nerdtree'
 ""https://github.com/jistr/vim-nerdtree-tabs
 Plugin  'jistr/vim-nerdtree-tabs'
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Plugins:Syntax highlighting
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " end the vundle run.
 call vundle#end()
 
 "}}}
-" settings after#vundle ---------------- {{{
+"settings after#vundle ---------------- {{{
 set rtp+=$GOROOT/misc/vim
 filetype on
 filetype indent on
@@ -166,6 +163,10 @@ inoremap jk <ESC>
 noremap <C-1> :bfirst
 noremap <C-2> :blast
 
+" Close a buffer, it will give a warning if changes has been made to this
+" buffer.
+nnoremap <leader>bd :bd<CR>
+
 nmap <S-Enter> O<Esc>j
 nmap <CR> o<Esc>k
 "is suppose to change buffers with tab and shift-tab. would still be nice
@@ -192,20 +193,18 @@ nnoremap <silent> <leader>ch :exec 'silent !open -a "Chrome" % &'
 inoremap <c-u> <esc>0v$U
 nnoremap <c-u> 0v$U
 
+"Turn off search highlight
+nnoremap <leader>hl :noh<cr>
+
 "where ever we are, this mapping will allways
 "point to our .vimrc file and open it in a split window.
 " the $MYVIMRC is a variable that allways points to our .vimrc file.
 nnoremap <leader>ev :vsplit $MYVIMRC <cr>
 
-
 "whenever we make a mapping, we have to quit vim, and enter again,
 "to make that easier we're going to map our :source and give it the .vimrc
 "variable as parameter, so each time we do it, we compile our .vimrc.
 nnoremap <leader>sv :source $MYVIMRC<cr>
-
-
-
-
 " }}}
 "Nerdtree settings and mappings ------------------- {{{
 "NERDTtree= Tabs configuration.
@@ -300,11 +299,6 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'fatih/vim-go'
     Plug 'nsf/gocode', { 'rtp': 'nvim', 'do':'~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
     Plug 'zchee/deoplete-go', {'do': 'make'}
-
-Plug 'fsharp/vim-fsharp', {
-      \ 'for': 'fsharp',
-      \ 'do':  'make fsautocomplete',
-      \}
 
 "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 
