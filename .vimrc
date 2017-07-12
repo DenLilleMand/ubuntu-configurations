@@ -44,7 +44,6 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 
-
 "Automatically closes HTML tag once you finish typing it with >. It is also smart enough to not autoclose tags when in a comment,
 "when they are self-closing, or when they have already been closed.
 Plugin 'amirh/HTML-AutoCloseTag'
@@ -298,14 +297,23 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'Shougo/deoplete.nvim'
     Plug 'fatih/vim-go'
     Plug 'nsf/gocode', { 'rtp': 'nvim', 'do':'~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+    Plug 'airblade/vim-gitgutter'
     Plug 'zchee/deoplete-go', {'do': 'make'}
-
-"Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-
-"Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
-
-	
-
+    Plug 'pangloss/vim-javascript'
+    Plug 'ryym/vim-riot'
+    Plug 'ctrlpvim/ctrlp.vim'
+    Plug 'w0rp/ale'
+    "Plug 'vim-scripts/bufexplorer.zip'
+    "Plug 'terryma/vim-multiple-cursors'
+    Plug 'amix/open_file_under_cursor.vim'
+    Plug 'vim-scripts/nginx.vim'
+    Plug 'maxbrunsfeld/vim-yankstack'
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-fugitive'
+    Plug 'easymotion/vim-easymotion'
+    
+    "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+    "Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
 call plug#end()
 " }}}
 "some neovim mappings for yanking and pasting ------------ {{{
@@ -321,6 +329,15 @@ vnoremap <leader>P "+P
 
 
 "}}}
+"Other plugin configurations-------------------{{{
+"let g:multi_cursor_use_default_mapping=0
+
+"let g:multi_cursor_next_key='<leader>n'
+"let g:multi_cursor_prev_key='<leader>p'
+"let g:multi_cursor_skip_key='<leader>x'
+"let g:multi_cursor_quit_key='<leader>e'
+
+"}}}
 "vim-go ---------------- {{{
 "configuration:
 let g:go_highlight_string_spellcheck = 1
@@ -333,6 +350,17 @@ let g:go_highlight_functions = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_trailing_whitespace_error = 1
 let g:go_highlight_extra_types = 1
+let g:go_highlight_structs = 1
+
+let g:go_auto_sameids = 1
+
+let g:go_fmt_command = "goimports"
+
+" Error and warning signs.
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
 
 "Help mappings:
 "Go mappings(maybe i should move them into filetype specific, but then again
@@ -346,7 +374,8 @@ nnoremap <leader>l :GoLint<cr>
 nnoremap <leader>gr :GoReferrers<cr>
 nnoremap <leader>gc :GoCallees<cr>
 nnoremap <leader>gi :GoImplements<cr>
-nnoremap <leader>gd :GoDecls
-nnoremap <leader>gdd :GoDeclsDir
+nnoremap <leader>gd :GoDecls<cr>
+nnoremap <leader>gdd :GoDeclsDir<cr>
+nnoremap <leader>o :GoDefPop<cr>
 "}}}
 endif

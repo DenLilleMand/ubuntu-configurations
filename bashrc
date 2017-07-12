@@ -55,10 +55,15 @@ alias mssql="sqlcmd -S localhost -U SA -P 'Denlilleiceman20!'"
 alias develop="flatpak run com.xamarin.MonoDevelop & disown"
 alias uml="umlet & disown"
 alias dropbox="~/.dropbox-dist/dropboxd & disown"
-alias todo="todo2"
+alias todo="todo2 --order=completed "
 alias datagrip="datagrip.sh & disown"
 alias toomuch="sudo du --max-depth=5 /* | sort -rn"
 alias record="recordmydesktop"
+alias phpstorm="phpstorm.sh & disown"
+alias maple="cd ~/maple2016/bin && ./xmaple & disown"
+alias cdtodo="cd ~/gotime/src/github.com/denlillemand/devtodo2"
+alias cduni="cd ~/Documents/ku/university"
+
 
 #setting vi mode in the terminal(AWESOME)
 set -o vi
@@ -112,6 +117,13 @@ export PATH=$PATH:$INTELLIJ_HOME/bin
 export PATH=$PATH:$RIDER_HOME/bin
 export PATH=$PATH:$GOGLAND_HOME/bin
 export PATH=$PATH:$GOPATH/src/github.com/denlillemand/blog
+
+#Alias using GOPATH declared right above
+alias cera="$GOPATH/src/github.com/ceraorg/ceraordre/scripts/run_all_services_local.sh"
+alias cdcera="cd $GOPATH/src/github.com/ceraorg/ceraordre"
+
+#colors
+export TERM="xterm-256color"
 
 
 # Path to the bash it configuration
