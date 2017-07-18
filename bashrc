@@ -119,8 +119,14 @@ export PATH=$PATH:$GOGLAND_HOME/bin
 export PATH=$PATH:$GOPATH/src/github.com/denlillemand/blog
 
 #Alias using GOPATH declared right above
-alias cera="$GOPATH/src/github.com/ceraorg/ceraordre/scripts/run_all_services_local.sh"
+alias cera="$GOPATH/src/github.com/ceraorg/ceraordre/scripts/cera.sh"
 alias cdcera="cd $GOPATH/src/github.com/ceraorg/ceraordre"
+
+
+export PAGER='vim -R -u ~/.vimrcpg -'
+export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/vim
+export PSQL_EDITOR=/usr/bin/vim 
 
 #colors
 export TERM="xterm-256color"

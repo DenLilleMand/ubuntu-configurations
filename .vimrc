@@ -303,8 +303,6 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'ryym/vim-riot'
     Plug 'ctrlpvim/ctrlp.vim'
     Plug 'w0rp/ale'
-    "Plug 'vim-scripts/bufexplorer.zip'
-    "Plug 'terryma/vim-multiple-cursors'
     Plug 'amix/open_file_under_cursor.vim'
     Plug 'vim-scripts/nginx.vim'
     Plug 'maxbrunsfeld/vim-yankstack'
@@ -314,6 +312,11 @@ call plug#begin('$HOME/.config/nvim/plugged')
     
     "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     "Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
+
+    "Had some performance issues i think;
+    "Plug 'vim-scripts/bufexplorer.zip' 
+    "Good idea for a plugin, but doesn't work 100%:
+    "Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 " }}}
 "some neovim mappings for yanking and pasting ------------ {{{
@@ -331,12 +334,10 @@ vnoremap <leader>P "+P
 "}}}
 "Other plugin configurations-------------------{{{
 "let g:multi_cursor_use_default_mapping=0
-
-"let g:multi_cursor_next_key='<leader>n'
+"let g:multi_cursor_next_key='<leader>m'
 "let g:multi_cursor_prev_key='<leader>p'
 "let g:multi_cursor_skip_key='<leader>x'
 "let g:multi_cursor_quit_key='<leader>e'
-
 "}}}
 "vim-go ---------------- {{{
 "configuration:
@@ -379,3 +380,6 @@ nnoremap <leader>gdd :GoDeclsDir<cr>
 nnoremap <leader>o :GoDefPop<cr>
 "}}}
 endif
+
+syntax on
+au BufRead /tmp/psql.edit.* set syntax=sql
