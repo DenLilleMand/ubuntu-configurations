@@ -124,6 +124,8 @@ alias cdcera="cd $GOPATH/src/github.com/ceraorg/ceraordre"
 
 
 export PAGER='vim -R -u ~/.vimrcpg -'
+export MANPAGER="/bin/sh -c \"col -b | vim -c 'set ft=man ts=8 nomod nolist nonu noma' -\""
+
 export VISUAL=/usr/bin/vim
 export EDITOR=/usr/bin/vim
 export PSQL_EDITOR=/usr/bin/vim 

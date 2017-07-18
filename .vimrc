@@ -309,6 +309,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'tpope/vim-surround'
     Plug 'tpope/vim-fugitive'
     Plug 'easymotion/vim-easymotion'
+    Plug 'rkitover/vimpager'
     
     "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     "Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
