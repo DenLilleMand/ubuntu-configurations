@@ -310,6 +310,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'easymotion/vim-easymotion'
     Plug 'rkitover/vimpager'
+    "Plug 'mileszs/ack.vim'
     
     "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     "Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
@@ -330,8 +331,6 @@ nnoremap <leader>p "+p
 nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
-
-
 "}}}
 "Other plugin configurations-------------------{{{
 "let g:multi_cursor_use_default_mapping=0
@@ -339,6 +338,11 @@ vnoremap <leader>P "+P
 "let g:multi_cursor_prev_key='<leader>p'
 "let g:multi_cursor_skip_key='<leader>x'
 "let g:multi_cursor_quit_key='<leader>e'
+
+"if executable('ag')
+  "let g:ackprg = 'ag --vimgrep'
+"endif
+
 "}}}
 "vim-go ---------------- {{{
 "configuration:
@@ -364,6 +368,7 @@ let g:ale_sign_warning = '⚠'
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
 
+
 "Help mappings:
 "Go mappings(maybe i should move them into filetype specific, but then again
 "i sometimes open nvim in a go repository with no files open and want to run
@@ -379,6 +384,16 @@ nnoremap <leader>gi :GoImplements<cr>
 nnoremap <leader>gd :GoDecls<cr>
 nnoremap <leader>gdd :GoDeclsDir<cr>
 nnoremap <leader>o :GoDefPop<cr>
+nnoremap <leader>a :GoAlternate<cr>
+nnoremap <leader>tf :GoTestFunc<cr>
+"}}}
+"GoCode configuration --------------- {{{
+"GoCode is configured through json somewhere at ~/.config/gocode
+"Basically gocode when installed puts it self in your cmdline right,
+"so you just have to call the following settings on it:
+"gocode set propose-builtins true
+"gocode set lib-path vendor
+"gocode set autobuild true
 "}}}
 endif
 
