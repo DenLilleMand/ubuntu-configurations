@@ -132,7 +132,7 @@ export EDITOR=/usr/bin/vim
 export PSQL_EDITOR=/usr/bin/vim 
 
 #colors
-export TERM="xterm-256color"
+#export TERM="xterm-256color"
 
 
 # Path to the bash it configuration

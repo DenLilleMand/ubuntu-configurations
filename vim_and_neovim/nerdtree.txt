@@ -1,0 +1,8 @@
+nerdtree icons:
+
+https://github.com/ryanoasis/vim-devicons
+
+nerdtree icon colors:
+
+
+https://github.com/tiagofumo/vim-nerdtree-syntax-highlight

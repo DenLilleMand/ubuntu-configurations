@@ -1,13 +1,15 @@
 "author info -----------------------------{{{
 "Author:DenLilleMand
 "Creation Date: 1st of january,  2015
-"Description: Alot of the most popular plugins, mainly javascript focused.
+"Description: Alot of the most popular plugins, mainly golang focused
+"right now.
 "License: MIT
 "}}}
 " settings before#vundle -------------------- {{{
 
 "if this wasn't on, we would run in vi-compatible mode.
 set nocompatible
+set encoding=utf8
 
 "these two are being turned on when we're behind the
 "vundle installation. aparently it should be a good thing
@@ -289,11 +291,54 @@ filetype plugin indent on
 "}}}
 "neo-vim specific ------------- {{{
 if has('nvim')
+
+" NERDTress File highlighting
+"function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+ "exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ "exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+"endfunction
+
+"call NERDTreeHighlightFile('go', 'green', 'none', 'green', '#151515')
+"call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+"call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+"call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+"call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+"call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+"call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+"call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+"call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+"call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+"call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+"call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+"call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+"call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+
+"let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
+"let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+let g:NERDTreeLimitedSyntax = 1
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let s:gopher_blue = '#6AD7E5'
+let g:NERDTreeSyntaxEnabledExtensions = ['go']
+let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExtensionHighlightColor['go'] = s:gopher_blue " sets the color of css files to blue
+
+
+
+"Attempt at overriding the gopher icon with another icon, i would like to put
+"in a real gopher instead of the other one.
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
+"let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['go'] = 'ƛ'
+
+
 "deoplete(for auto-completion in nvim ------------ {{{
 let g:deoplete#enable_at_startup=1
 "}}}
 "Vim-plug -------------------- {{{
 call plug#begin('$HOME/.config/nvim/plugged')
+    Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
     Plug 'Shougo/deoplete.nvim'
     Plug 'fatih/vim-go'
     Plug 'nsf/gocode', { 'rtp': 'nvim', 'do':'~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
@@ -310,6 +355,8 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'easymotion/vim-easymotion'
     Plug 'rkitover/vimpager'
+    Plug 'ryanoasis/vim-devicons'
+    Plug 'kshenoy/vim-signature'
     "Plug 'mileszs/ack.vim'
     
     "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
@@ -395,6 +442,9 @@ nnoremap <leader>tf :GoTestFunc<cr>
 "gocode set lib-path vendor
 "gocode set autobuild true
 "}}}
+
+set t_Co=256
+
 endif
 
 syntax on
