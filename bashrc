@@ -60,7 +60,7 @@ alias datagrip="datagrip.sh & disown"
 alias toomuch="sudo du --max-depth=5 /* | sort -rn"
 alias record="recordmydesktop"
 alias phpstorm="phpstorm.sh & disown"
-alias maple="cd ~/maple2016/bin && ./xmaple & disown"
+alias maple="cd ~/maple2017/bin && ./xmaple & disown"
 alias cdtodo="cd ~/gotime/src/github.com/denlillemand/devtodo2"
 alias cduni="cd ~/Documents/ku/university"
 
@@ -132,7 +132,7 @@ export EDITOR=/usr/bin/vim
 export PSQL_EDITOR=/usr/bin/vim 
 
 #colors
-#export TERM="xterm-256color"
+export TERM="xterm-256color"
 
 
 # Path to the bash it configuration

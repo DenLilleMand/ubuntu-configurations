@@ -317,21 +317,19 @@ if has('nvim')
 "let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
 let g:NERDTreeLimitedSyntax = 1
-let g:NERDTreeFileExtensionHighlightFullName = 1
-let g:NERDTreeExactMatchHighlightFullName = 1
-let g:NERDTreePatternMatchHighlightFullName = 1
-let s:gopher_blue = '#6AD7E5'
-let g:NERDTreeSyntaxEnabledExtensions = ['go']
-let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExtensionHighlightColor['go'] = s:gopher_blue " sets the color of css files to blue
-
-
+"let g:NERDTreeFileExtensionHighlightFullName = 1
+"let g:NERDTreeExactMatchHighlightFullName = 1
+"let g:NERDTreePatternMatchHighlightFullName = 1
+"let s:gopher_blue = '#6AD7E5'
+"let g:NERDTreeSyntaxEnabledExtensions = ['go']
+"let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
+"let g:NERDTreeExtensionHighlightColor['go'] = s:gopher_blue " sets the color of css files to blue
+"set t_Co=256
 
 "Attempt at overriding the gopher icon with another icon, i would like to put
 "in a real gopher instead of the other one.
 "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['go'] = 'ƛ'
-
 
 "deoplete(for auto-completion in nvim ------------ {{{
 let g:deoplete#enable_at_startup=1
@@ -347,7 +345,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'pangloss/vim-javascript'
     Plug 'ryym/vim-riot'
     Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'w0rp/ale'
+    "Plug 'w0rp/ale'
     Plug 'amix/open_file_under_cursor.vim'
     Plug 'vim-scripts/nginx.vim'
     Plug 'maxbrunsfeld/vim-yankstack'
@@ -357,7 +355,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'rkitover/vimpager'
     Plug 'ryanoasis/vim-devicons'
     Plug 'kshenoy/vim-signature'
-    "Plug 'mileszs/ack.vim'
+    Plug 'mileszs/ack.vim'
     
     "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     "Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
@@ -410,10 +408,10 @@ let g:go_auto_sameids = 1
 let g:go_fmt_command = "goimports"
 
 " Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
+"let g:ale_sign_error = '⤫'
+"let g:ale_sign_warning = '⚠'
 " Enable integration with airline.
-let g:airline#extensions#ale#enabled = 1
+"let g:airline#extensions#ale#enabled = 1
 
 
 "Help mappings:
@@ -443,9 +441,68 @@ nnoremap <leader>tf :GoTestFunc<cr>
 "gocode set autobuild true
 "}}}
 
-set t_Co=256
+" Search settings
+let g:ag_highlight = 1
+let g:ackhighlight = 1
+let g:airline#extensions#tabline#enabled = 1
+
+"Ack configuration
+cnoreabbrev Ack Ack!
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+function! CmdLine(str)
+
+    exe "menu Foo.Bar :" . a:str
+    emenu Foo.Bar
+    unmenu Foo
+endfunction 
+
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", "\\/.*'$^~[]")
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'gv'
+        call CmdLine("Ack '" . l:pattern . "' " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
+
+
+
+
+
+
+" When you press gv you Ack after the selected text
+vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 endif
 
 syntax on
 au BufRead /tmp/psql.edit.* set syntax=sql
+"Functions---------------------{{{
+" Zoom / Restore window.
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <C-A> :ZoomToggle<CR>
+
+"}}}
