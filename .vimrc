@@ -316,6 +316,8 @@ if has('nvim')
 "let g:NERDTreeHighlightFolders = 1 " enables folder icon highlighting using exact match
 "let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
 
+"I tried to change the nerdtree setup, so that it made the gopher icon for
+"golang files into that blue color.
 let g:NERDTreeLimitedSyntax = 1
 "let g:NERDTreeFileExtensionHighlightFullName = 1
 "let g:NERDTreeExactMatchHighlightFullName = 1
@@ -330,7 +332,6 @@ let g:NERDTreeLimitedSyntax = 1
 "in a real gopher instead of the other one.
 "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['go'] = 'ƛ'
-
 "deoplete(for auto-completion in nvim ------------ {{{
 let g:deoplete#enable_at_startup=1
 "}}}
@@ -356,7 +357,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'ryanoasis/vim-devicons'
     Plug 'kshenoy/vim-signature'
     Plug 'mileszs/ack.vim'
-    
+    Plug 'easymotion/vim-easymotion'
     "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     "Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
 
@@ -440,8 +441,23 @@ nnoremap <leader>tf :GoTestFunc<cr>
 "gocode set lib-path vendor
 "gocode set autobuild true
 "}}}
+" Relative numbers ---------------- {{{
+function! NumberToggle()
+    if &rnu == 1
+       set nornu
+    elseif &nu == 1
+       set rnu
+    else
+       set nu
+    endif
+endfunc
 
-" Search settings
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
+
+nnoremap <C-r> :call NumberToggle()<cr>
+"}}}
+" Search settings ------------{{{
 let g:ag_highlight = 1
 let g:ackhighlight = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -484,13 +500,29 @@ endfunction
 
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+"}}}
+" EasyMotion -----------{{{
+" <Leader>f{char} to move to {char}
+map  <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
 
+" s{char}{char} to move to {char}{char}
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Move to line
+map <Leader>L <Plug>(easymotion-bd-jk)
+nmap <Leader>L <Plug>(easymotion-overwin-line)
+
+" Move to word
+map  <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+"}}}
 endif
-
-syntax on
+"}}}
+" sql --------------- {{{
 au BufRead /tmp/psql.edit.* set syntax=sql
-"Functions---------------------{{{
-" Zoom / Restore window.
+"}}}
+" Zoom / Restore window. ------------ {{{
 function! s:ZoomToggle() abort
     if exists('t:zoomed') && t:zoomed
         execute t:zoom_winrestcmd
@@ -504,5 +536,4 @@ function! s:ZoomToggle() abort
 endfunction
 command! ZoomToggle call s:ZoomToggle()
 nnoremap <silent> <C-A> :ZoomToggle<CR>
-
 "}}}

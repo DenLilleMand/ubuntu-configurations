@@ -92,7 +92,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
-figlet DenLilleMand
+
 
 SCALA_HOME="/usr/local/share/scala"
 PHPSTORM_HOME="/home/denlillemand/Documents/IDE/phpstorm"
@@ -178,6 +178,11 @@ export SCM_CHECK=true
 # export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 
 
+#Print out cool stuff
+figlet DenLilleMand
+#my .neofetch file should be found in github.com/denlillemand/ubuntu_configurations/neofetch/neofetch
+#neofetch --config /home/denlillemand/.neofetch --ascii_distro Arch Linu
+neofetch --config /home/denlillemand/neofetch/neofetch.conf 
 
 # Load Bash It
 source $BASH_IT/bash_it.sh

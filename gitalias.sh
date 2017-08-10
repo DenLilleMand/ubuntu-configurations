@@ -1,3 +1,3 @@
 git config --global alias.co "commit"
-git config --global alias.sl "log --graph --oneline --pretty --n10"
+git config --global alias.graph "log --graph --oneline --pretty "
 
