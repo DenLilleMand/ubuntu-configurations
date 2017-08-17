@@ -155,7 +155,7 @@ augroup filetype_js
     \<cr>}
 augroup END
 " }}}
-"Abreviations ---------------------------- {{{
+"Abreviations/Aliases ---------------------------- {{{
 " }}}
 " Non-Plugin mappings -------------------- {{{
 "This maps jk to escape, that makes it hard to write jk, but its better than 'typeing escape each time to leave insert mode, anyway, i feel like ESC is "better suited for saveing+quitting a file, while shift-ESC could be :q!
@@ -274,6 +274,7 @@ let g:NERDTreeChDirMode       = 2
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='tomorrow'
 "}}}
 "Solarized settings -------------------- {{{
@@ -289,9 +290,27 @@ let g:tex_flavor='latex'
 " FSharp settings ---------------- {{{
 filetype plugin indent on
 "}}}
-"neo-vim specific ------------- {{{
+" sql --------------- {{{
+au BufRead /tmp/psql.edit.* set syntax=sql
+"}}}
+" Zoom / Restore window. ------------ {{{
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <C-A> :ZoomToggle<CR>
+"}}}
 if has('nvim')
-
+"neo-vim specific ------------- {{{
+" More nerdtree stuff ------------- {{{
 " NERDTress File highlighting
 "function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
  "exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
@@ -327,13 +346,15 @@ let g:NERDTreeLimitedSyntax = 1
 "let g:NERDTreeExtensionHighlightColor = {} " this line is needed to avoid error
 "let g:NERDTreeExtensionHighlightColor['go'] = s:gopher_blue " sets the color of css files to blue
 "set t_Co=256
-
+"}}}
+"Gopher stuff ------- {{{
 "Attempt at overriding the gopher icon with another icon, i would like to put
 "in a real gopher instead of the other one.
 "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols = {} " needed
 "let g:WebDevIconsUnicodeDecorateFileNodesExtensionSymbols['go'] = 'ƛ'
 "deoplete(for auto-completion in nvim ------------ {{{
 let g:deoplete#enable_at_startup=1
+"}}}
 "}}}
 "Vim-plug -------------------- {{{
 call plug#begin('$HOME/.config/nvim/plugged')
@@ -347,6 +368,7 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'ryym/vim-riot'
     Plug 'ctrlpvim/ctrlp.vim'
     "Plug 'w0rp/ale'
+    Plug 'tpope/vim-markdown'
     Plug 'amix/open_file_under_cursor.vim'
     Plug 'vim-scripts/nginx.vim'
     Plug 'maxbrunsfeld/vim-yankstack'
@@ -355,14 +377,15 @@ call plug#begin('$HOME/.config/nvim/plugged')
     Plug 'easymotion/vim-easymotion'
     Plug 'rkitover/vimpager'
     Plug 'ryanoasis/vim-devicons'
-    Plug 'kshenoy/vim-signature'
+    "Plug 'kshenoy/vim-signature'
     Plug 'mileszs/ack.vim'
     Plug 'easymotion/vim-easymotion'
+
     "Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
     "Plug 'flowtype/vim-flow', { 'do': 'npm install -g flow-bin'}
 
-    "Had some performance issues i think;
-    "Plug 'vim-scripts/bufexplorer.zip' 
+    "Had some performance issues i think:
+    Plug 'jlanzarotta/bufexplorer'
     "Good idea for a plugin, but doesn't work 100%:
     "Plug 'terryma/vim-multiple-cursors'
 call plug#end()
@@ -384,7 +407,7 @@ vnoremap <leader>P "+P
 "let g:multi_cursor_prev_key='<leader>p'
 "let g:multi_cursor_skip_key='<leader>x'
 "let g:multi_cursor_quit_key='<leader>e'
-
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 "if executable('ag')
   "let g:ackprg = 'ag --vimgrep'
 "endif
@@ -452,12 +475,14 @@ function! NumberToggle()
     endif
 endfunc
 
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
+"If i want vim to toggle it depending on insert/normal mode
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set relativenumber
 
 nnoremap <C-r> :call NumberToggle()<cr>
 "}}}
 " Search settings ------------{{{
+"ag
 let g:ag_highlight = 1
 let g:ackhighlight = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -500,6 +525,11 @@ endfunction
 
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
+
+"ctrlP
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_map = '<c-p>'
+map <c-b> :CtrlPBuffer<cr>
 "}}}
 " EasyMotion -----------{{{
 " <Leader>f{char} to move to {char}
@@ -517,23 +547,12 @@ nmap <Leader>L <Plug>(easymotion-overwin-line)
 map  <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 "}}}
+"Tabs ------------- {{{
+map <leader>tn :+tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabnext<cr>
+map <leader>tb :tabprevious<cr> 
+"}}}
+"}}}
 endif
-"}}}
-" sql --------------- {{{
-au BufRead /tmp/psql.edit.* set syntax=sql
-"}}}
-" Zoom / Restore window. ------------ {{{
-function! s:ZoomToggle() abort
-    if exists('t:zoomed') && t:zoomed
-        execute t:zoom_winrestcmd
-        let t:zoomed = 0
-    else
-        let t:zoom_winrestcmd = winrestcmd()
-        resize
-        vertical resize
-        let t:zoomed = 1
-    endif
-endfunction
-command! ZoomToggle call s:ZoomToggle()
-nnoremap <silent> <C-A> :ZoomToggle<CR>
-"}}}

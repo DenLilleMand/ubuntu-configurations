@@ -64,6 +64,8 @@ alias maple="cd ~/maple2017/bin && ./xmaple & disown"
 alias cdtodo="cd ~/gotime/src/github.com/denlillemand/devtodo2"
 alias cduni="cd ~/Documents/ku/university"
 
+alias nosound="amixer -D pulse sset Master 0%"
+alias sound="amixer -D pulse sset Master 100%"
 
 #setting vi mode in the terminal(AWESOME)
 set -o vi
@@ -179,10 +181,20 @@ export SCM_CHECK=true
 
 
 #Print out cool stuff
-figlet DenLilleMand
 #my .neofetch file should be found in github.com/denlillemand/ubuntu_configurations/neofetch/neofetch
-#neofetch --config /home/denlillemand/.neofetch --ascii_distro Arch Linu
-neofetch --config /home/denlillemand/neofetch/neofetch.conf 
+#neofetch -?-config /home/denlillemand/.neofetch --ascii_distro Arch Linu
+#if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+#neofetch --ascii_distro Arch Linu  #Doesn't work unfortunately, tmux doesn't understand when its scripted. :( 
+tmux has-session -t $USER
+#$? is a variable that contains the most recent commands exit code.
+#it seems like we have to store it instantly in a variable, otherwise the slightest
+#commands will override it.
+HAS_TMUX_SESSION=$?
+if [ $HAS_TMUX_SESSION -ne 0 ]
+then
+    neofetch --config /home/denlillemand/neofetch/neofetch.conf 
+fi
+    figlet DenLilleMand
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
